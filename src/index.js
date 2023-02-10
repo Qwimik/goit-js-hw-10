@@ -12,7 +12,7 @@ const refs = {
   divEl: document.querySelector('.country-info'),
 };
 
-refs.inputEl.addEventListener('input', debounce(onInputChange, 300));
+refs.inputEl.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
 
 function onInputChange() {
   if (refs.inputEl.value === '' || refs.inputEl.value === ' ') {
