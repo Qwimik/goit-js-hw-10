@@ -1,8 +1,6 @@
 import fetchCountries from './js/fetchCountries';
 import debounce from 'lodash.debounce';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import './css/styles.css';
-// const debounce = require('lodash.debounce');
 
 const DEBOUNCE_DELAY = 300;
 
@@ -20,12 +18,7 @@ function onInputChange() {
   }
   let value = refs.inputEl.value.trim();
 
-  fetchCountries(value)
-    .then(filterCountry)
-    .catch(err => {
-      console.log(err);
-      Notify.failure('Oops, there is no country with that name');
-    });
+  fetchCountries(value).then(filterCountry).catch(console.log);
 }
 
 function filterCountry(countries) {
