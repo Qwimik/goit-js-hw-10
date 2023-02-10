@@ -15,6 +15,8 @@ const refs = {
 refs.inputEl.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
 
 function onInputChange() {
+  clearTextElements();
+
   if (refs.inputEl.value === '' || refs.inputEl.value === ' ') {
     return;
   }
@@ -38,8 +40,6 @@ function filterCountry(countries) {
 }
 
 function renderCountries(countries) {
-  refs.divEl.innerHTML = '';
-
   countries.map(country => {
     const countriesElems = `
     <div class="countries">
@@ -47,12 +47,11 @@ function renderCountries(countries) {
         <span>${country.name.official}</span>
     </div>`;
 
-    refs.divEl.insertAdjacentHTML('beforeend', countriesElems);
+    refs.listEl.insertAdjacentHTML('beforeend', countriesElems);
   });
 }
 
 function renderCountry(country) {
-  refs.divEl.innerHTML = '';
   const lang = Object.values(country[0].languages);
 
   const countryElems = `
@@ -77,4 +76,9 @@ function renderCountry(country) {
     </div>`;
 
   refs.divEl.insertAdjacentHTML('beforeend', countryElems);
+}
+
+function clearTextElements() {
+  refs.divEl.innerHTML = '';
+  refs.listEl.innerHTML = '';
 }
