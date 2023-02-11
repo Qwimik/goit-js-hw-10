@@ -44,10 +44,10 @@ function filterCountry(countries) {
 function renderCountries(countries) {
   countries.map(country => {
     const countriesElems = `
-    <div class="countries">
+    <li class="countries">
         <img src="${country.flags.svg}" alt="${country.name.official}" width="40"/>
         <span>${country.name.official}</span>
-    </div>`;
+    </li>`;
 
     refs.listEl.insertAdjacentHTML('beforeend', countriesElems);
   });
