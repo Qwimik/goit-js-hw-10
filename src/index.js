@@ -22,7 +22,9 @@ function onInputChange() {
   }
   let value = refs.inputEl.value.trim();
 
-  fetchCountries(value).then(filterCountry).catch(console.log);
+  fetchCountries(value)
+    .then(filterCountry)
+    .catch(err => Notify.failure('Oops, there is no country with that name'));
 }
 
 function filterCountry(countries) {
